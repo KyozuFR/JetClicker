@@ -10,5 +10,6 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        avion AvionTest = new avion(true, "Gerar", 15, 180, 5.0, 2.0);
     }
 }
