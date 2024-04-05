@@ -1,6 +1,5 @@
 package jetclicker;
 
-import org.checkerframework.checker.units.qual.Angle;
 
 public class Avion {
     boolean est_avion_privee;

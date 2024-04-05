@@ -1,6 +1,8 @@
-class Player{
-    public Integer score;
-    public Stirng nom;
+package jetclicker;
+
+public class Player{
+    private Integer score;
+    private String nom;
 
     public void scoreUp(){
         this.score=this.score+1;
