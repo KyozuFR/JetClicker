@@ -1,7 +1,7 @@
 package jetclicker;
 
 public class Tick implements Runnable{
-    private final int pause = 3;
+    private final int pause = 300;
 
     @Override
     public void run(){
