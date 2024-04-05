@@ -6,7 +6,7 @@ class Player{
         this.score=this.score+1;
     }
 
-    public getScore(){
+    public int getScore(){
         return this.score;
     }
 
@@ -14,7 +14,7 @@ class Player{
         this.nom=nom;
     }
 
-    public getNom(){
+    public String getNom(){
         return this.nom;
     }
 }
