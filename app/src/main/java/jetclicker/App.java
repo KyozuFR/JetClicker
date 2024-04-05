@@ -14,5 +14,7 @@ public class App {
         System.out.println(new App().getGreeting());
         Fenetre tab = new Fenetre();
         tab.setVisible(true);
+        Thread Tick = new Thread(new Tick());
+        Tick.start();
     }
 }

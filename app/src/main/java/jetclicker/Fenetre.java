@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class Fenetre extends JFrame{
 
-    private static Scene scene;
+    public static Scene scene;
 
     public Fenetre(){
 
@@ -22,6 +22,12 @@ public class Fenetre extends JFrame{
         // Implementation de la scene
         scene = new Scene();
         this.setContentPane(scene);
+    }
+    public int getLongueur(){
+        return this.getWidth();
+    }
+    public int getLargueur(){
+        return this.getHeight();
     }
 
 }
