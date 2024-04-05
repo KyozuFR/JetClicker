@@ -12,9 +12,13 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
-        Fenetre tab = new Fenetre();
-        tab.setVisible(true);
-        Thread Tick = new Thread(new Tick());
-        Tick.start();
+        Avion AvionTest = new Avion(true, "Gerar", Math.PI, 10, 0.0, 0.0);
+        AvionTest.deplacement();
+
+        System.out.println(AvionTest.positionX());
+        System.out.println(AvionTest.positionY());
+
+        Liste_Avion liste_AvionTest = new Liste_Avion();
+        liste_AvionTest.bouger_Avions();
     }
 }
