@@ -2,68 +2,75 @@ package jetclicker;
 
 import org.checkerframework.checker.units.qual.Angle;
 
-public class avion {
-    Boolean Private;
-    String Nom;
-    Integer Orientation;
-    Integer Speed;
-    Double x;
-    Double y;
+public class Avion {
+    boolean est_avion_privee;
+    String nom;
+    double orientation;
+    int vitesse;
+    double x;
+    double y;
 
     //#region Nom
     public String getNom() {
-        return Nom;
+        return nom;
     }
-    public void setNom(String Nom) {
-        this.Nom = Nom;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
-    public Integer getOrientation() {
-        return Orientation;
+    public double getOrientation() {
+        return orientation;
     }
-    public void setOrientation(Integer orientation) {
-        this.Orientation = orientation;
+    public void setOrientation(double orientation) {
+        this.orientation = orientation;
     }
-    public Integer getSpeed() {
-        return Speed;
+    public int getVitesse() {
+        return vitesse;
     }
-    public void setSpeed(Integer speed) {
-        this.Speed = speed;
+    public void setVitesse(int vitesse) {
+        this.vitesse = vitesse;
     }
-    public Boolean getPrivate() {
-        return Private;
+    public boolean getPrivate() {
+        return est_avion_privee;
     }
-    public void setPrivate(Boolean private1) {
-        Private = private1;
+    public void setPrivate(boolean est_avion_privee) {
+        this.est_avion_privee = est_avion_privee;
     }
     //#endregion
 
     //#region Coordonée
-    public Integer getX() {
+    public double getX() {
         return x;
     }
-    public void setX(Integer x) {
+    public void setX(double x) {
         this.x = x;
     }
-    public Integer getY() {
+    public double getY() {
         return y;
     }
-    public void setY(Integer y) {
+    public void setY(double y) {
         this.y = y;
     }
     //#endregion
 
-    avion(Boolean IsPrivate, String LeNom, Integer LOrientation, Integer LaVitesse, Double LeX, Double LeY){
-        this.Private = IsPrivate;
-        this.Nom = LeNom;
-        this.Orientation = LOrientation;
-        this.Speed = LaVitesse;
-        this.x = LeX;
-        this.y = LeY;
+    Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
+        this.est_avion_privee = IsPrivate;
+        this.nom = nom;
+        this.orientation = orientation;
+        this.vitesse = vitesse;
+        this.x = x;
+        this.y = y;
     }
 
-    public void moving(){
-        this.x = this.Speed * Math.cos(Orientation);
-        this.x = this.Speed * Math.sin(Orientation);
+    public void deplacement(){
+        this.x += this.vitesse * Math.cos(orientation);
+        this.y += this.vitesse * Math.sin(orientation);
     }
 
+    public int positionX(){
+        return (int) Math.round(x);
+    }
+
+    public int positionY(){
+        return (int) Math.round(y);
+    }
 }
