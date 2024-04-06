@@ -24,7 +24,7 @@ public class Scene extends JPanel {
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Liste_Avion();
+        objListAv = new Liste_Avion(100000);
         //xtest = 1;
 
     }

@@ -25,7 +25,7 @@ public class App {
         //System.out.println(AvionTest.positionX());
         //System.out.println(AvionTest.positionY());
 
-        Liste_Avion liste_AvionTest = new Liste_Avion();
-        liste_AvionTest.bouger_Avions();
+        //Liste_Avion liste_AvionTest = new Liste_Avion();
+        //liste_AvionTest.bouger_Avions();
     }
 }
