@@ -16,16 +16,17 @@ public class Fenetre extends JFrame{
         this.setTitle("Jetclicker");
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBounds(100,150,400,400);
+        this.setBounds(0,0,800,800);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         this.setUndecorated(true);
         this.setAlwaysOnTop(true);
         joueur = new Player();
         this.addMouseListener(joueur);
+        
 
         
         // Implementation de la scene
-        scene = new Scene();
+        scene = new Scene(this);
         this.setContentPane(scene);
     }
     public int getLongueur(){

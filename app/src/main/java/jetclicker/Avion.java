@@ -51,7 +51,16 @@ public class Avion {
     }
     //#endregion
 
-    Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
+    public Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
+        this.est_avion_privee = IsPrivate;
+        this.nom = nom;
+        this.orientation = orientation;
+        this.vitesse = vitesse;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void changerAvion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_avion_privee = IsPrivate;
         this.nom = nom;
         this.orientation = orientation;

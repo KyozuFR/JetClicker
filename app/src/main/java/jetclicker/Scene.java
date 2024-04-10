@@ -18,12 +18,12 @@ public class Scene extends JPanel {
     //private Image imgtest;
     //private int xtest;
 
-    public Scene(){
+    public Scene(Fenetre tab){
         //Variable initialisé
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Liste_Avion(10);
+        objListAv = new Liste_Avion(10, tab);
         //xtest = 1;
 
     }
@@ -68,6 +68,7 @@ public class Scene extends JPanel {
         //xtest += 10;
         
         g2.drawImage(this.imgFond, -50, -50, null);
+        
         ArrayList<Avion> listAvion = objListAv.getListeAvion();
         for (Avion avion : listAvion) {
             g2.drawImage(getChoixImage(avion.getOrientation()), avion.positionX(), avion.positionY(), null);
