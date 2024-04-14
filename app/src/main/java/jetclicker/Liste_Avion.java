@@ -29,6 +29,7 @@ public class Liste_Avion {
         for (Avion avion : tempavion) {
             avion.deplacement();
             avionSorti(avion);
+            randomOrientation(avion, liste_avion.size()*20);
         }
     }
 
@@ -46,5 +47,11 @@ public class Liste_Avion {
             avion.changerAvion(true,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
         }
 
+    }
+
+    public void randomOrientation(Avion avion, int chance){
+        if (rand.nextInt(liste_avion.size()+chance) == 1){
+            avion.setOrientation(rand.nextDouble()*2*Math.PI-Math.PI);
+        }
     }
 }
