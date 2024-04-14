@@ -14,6 +14,7 @@ public class App {
         System.out.println(new App().getGreeting());
 
         Fenetre tab = new Fenetre();
+        tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
         tab.setVisible(true);
 
         Thread Tick = new Thread(new Tick());
