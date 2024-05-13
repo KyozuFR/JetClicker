@@ -22,6 +22,10 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    // Dépendance lié à l'api d'OpenSky
+    implementation "com.squareup.okhttp3:okhttp:3.6.0"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.7.1"
 }
 
 application {
