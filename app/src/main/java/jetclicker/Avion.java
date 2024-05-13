@@ -142,7 +142,6 @@ public class Avion {
         this.y = y;
     }
     //#endregion
-<<<<<<< HEAD
 
 /**
  * Choisi le nom et la marque de la companie de l'avion aléatoirement.
@@ -150,8 +149,6 @@ public class Avion {
  * @return L'image à utiliser pour modéliser l'avion
  */
 
-=======
->>>>>>> 4253f5b (Rebase et push temp)
     public String choisirNom(){
         Random rand = new Random();
         int choixImage = rand.nextInt(7);
@@ -205,7 +202,6 @@ public class Avion {
         this.y = y;
     }
 
-<<<<<<< HEAD
 /**
  * Méthode utilisée si un avion est détruit ou sort de la carte.
  * Il est alors réinitialisé et devient un nouvel avion avec de nouveaux paramètres.
@@ -218,8 +214,6 @@ public class Avion {
  * @param y Double qui détermine les coordonnées de départ de l'avion
  */
 
-=======
->>>>>>> 4253f5b (Rebase et push temp)
     public void changerAvion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_jet = IsPrivate;
         this.nom = choisirNom();
