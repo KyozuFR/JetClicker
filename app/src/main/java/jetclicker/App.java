@@ -5,10 +5,10 @@ package jetclicker;
 
 import java.io.IOException;
 
-import jetclicker.opensky.api.OpenSkyApi;
-import jetclicker.opensky.api.OpenSkyApi.BoundingBox;
-import jetclicker.opensky.model.OpenSkyStates;
-import jetclicker.opensky.model.StateVector;
+import jetclicker.openskynetwork.api.OpenSkyApi;
+import jetclicker.openskynetwork.api.OpenSkyApi.BoundingBox;
+import jetclicker.openskynetwork.model.OpenSkyStates;
+import jetclicker.openskynetwork.model.StateVector;
 
 /**
  * Cette classe lance tout le jeu.
@@ -43,14 +43,20 @@ public class App {
 
         try {
             OpenSkyApi api = new OpenSkyApi("Dystog", "@JetClicker02");
-            OpenSkyStates os = api.getStates(0, null, new BoundingBox(45.8389, 47.8229, 5.9962, 10.5226)); // Utilisation directe de BoundingBox
+            double latA = 40.6;
+            double lonA = -9.6;
+            double latB = 50.0;
+            double lonB = 17.4;
+            OpenSkyStates os = api.getStates(0, null, new BoundingBox(latA, latB, lonA, lonB)); // Utilisation directe de BoundingBox
             if (os.getStates() != null) {
-                System.out.println("Nombre d'états récupérés : " + os.getStates().size());
+                System.out.println("Nombre d'avions recuperes : " + os.getStates().size());
                 for (StateVector state : os.getStates()) {
-                    System.out.println("ICAO24 : " + state.getIcao24() + " CALLSIGN : " + state.getCallsign());
+                    if (state.getHeading() != null && (state.getVelocity() != null && state.getVelocity() >= 100)) {
+                        System.out.println(state.getIcao24() + " " + state.getCallsign() + " " + state.getLatitude() + " " + state.getLongitude());
+                    }
                 }
             } else {
-                System.out.println("Aucune donnée d'état retournée.");
+                System.out.println("Aucun avion recupere");
             }
         } catch (IOException e) {
             e.printStackTrace();

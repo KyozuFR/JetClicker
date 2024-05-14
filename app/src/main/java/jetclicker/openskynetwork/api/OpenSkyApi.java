@@ -1,4 +1,4 @@
-package jetclicker.opensky.api;
+package jetclicker.openskynetwork.api;
 
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-import jetclicker.opensky.model.OpenSkyStates;
-import jetclicker.opensky.model.OpenSkyStatesDeserializer;
+import jetclicker.openskynetwork.model.OpenSkyStates;
+import jetclicker.openskynetwork.model.OpenSkyStatesDeserializer;
 import okhttp3.*;
 
 import java.io.IOException;
