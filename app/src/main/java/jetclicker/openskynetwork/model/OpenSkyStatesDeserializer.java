@@ -1,4 +1,4 @@
-package jetclicker.opensky.model;
+package jetclicker.openskynetwork.model;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;

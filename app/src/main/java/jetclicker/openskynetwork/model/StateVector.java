@@ -1,4 +1,4 @@
-package jetclicker.opensky.model;
+package jetclicker.openskynetwork.model;
 
 import java.io.Serializable;
 import java.util.HashSet;

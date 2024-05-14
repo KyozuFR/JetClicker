@@ -1,4 +1,4 @@
-package jetclicker.opensky.model;
+package jetclicker.openskynetwork.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
