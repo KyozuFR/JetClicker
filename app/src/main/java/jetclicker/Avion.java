@@ -1,5 +1,6 @@
 package jetclicker;
 
+import java.util.Random;
 
 public class Avion {
     boolean est_avion_privee;
@@ -50,10 +51,41 @@ public class Avion {
         this.y = y;
     }
     //#endregion
-
+    public String choisirNom(){
+        Random rand = new Random();
+        int choixImage = rand.nextInt(7);
+        String imagePath = "";
+        
+        switch (choixImage) {
+            case 0:
+                imagePath = "app/src/main/resources/avion/avion/";
+                break;
+			case 1:
+                imagePath = "app/src/main/resources/avion/avion_airfrance/";
+                break;
+			case 2:
+                imagePath = "app/src/main/resources/avion/avion_easyjet/";
+                break;
+			case 3:
+                imagePath = "app/src/main/resources/avion/avion_iberia/";
+                break;
+			case 4:
+                imagePath = "app/src/main/resources/avion/avion_lufthansa/";
+                break;
+			case 5:
+                imagePath = "app/src/main/resources/avion/avion_Vueling/";
+                break;
+			case 6:
+                imagePath = "app/src/main/resources/avion/avion_Wizzair/";
+                break;
+            default:
+                break;
+        }
+        return imagePath;
+    }
     public Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_avion_privee = IsPrivate;
-        this.nom = nom;
+        this.nom = choisirNom();
         this.orientation = orientation;
         this.vitesse = vitesse;
         this.x = x;
@@ -62,7 +94,7 @@ public class Avion {
 
     public void changerAvion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_avion_privee = IsPrivate;
-        this.nom = nom;
+        this.nom = choisirNom();
         this.orientation = orientation;
         this.vitesse = vitesse;
         this.x = x;
