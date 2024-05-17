@@ -3,12 +3,12 @@ package jetclicker;
 import java.util.ArrayList;
 import java.util.Random;    
 
-public class Liste_Avion {
+public class Gestionnaire_avion {
     private ArrayList<Avion> liste_avion = new ArrayList<Avion>();
     private Fenetre tab;
     private Random rand;
 
-    public Liste_Avion(int n, Fenetre tabF){
+    public Gestionnaire_avion(int n, Fenetre tabF){
         this.tab = tabF;
         creeAvions(n);
     }

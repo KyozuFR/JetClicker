@@ -11,19 +11,30 @@ import javax.swing.JPanel;
 public class Scene extends JPanel {
 
     private ImageIcon icoFond;
+    private static Scene scene;
     private Image imgFond;
-    public static Liste_Avion objListAv;
+    public Gestionnaire_avion objListAv;
     //private ImageIcon icotest;
     //private Image imgtest;
     //private int xtest;
 
-    public Scene(Fenetre tab){
+    private Scene(Fenetre tab){
         //Variable initialisé
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Liste_Avion(100, tab);
+        objListAv = new Gestionnaire_avion(100, tab);
         //xtest = 1;
+
+    }
+    public static Scene getScene(Fenetre tab){
+        if (scene == null){
+            scene = new Scene(tab);
+        }
+        return scene;
+    }
+    public static Scene getScene(){
+        return scene;
 
     }
 

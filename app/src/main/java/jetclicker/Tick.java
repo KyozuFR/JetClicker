@@ -6,7 +6,7 @@ public class Tick implements Runnable{
     @Override
     public void run(){
         while (true) {
-            Fenetre.scene.repaint();
+            Scene.getScene().repaint();
             try{
                 Thread.sleep(pause);
             } catch (InterruptedException e){}

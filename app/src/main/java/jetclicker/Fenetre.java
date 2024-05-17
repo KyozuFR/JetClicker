@@ -6,8 +6,8 @@ public class Fenetre extends JFrame{
 
     //beaucoup de variable static car on a fait l'erreur au début de crée les classe directement dans d'autre classe au lieu de toutes les crée dans le main avec pour arguments les autres classes
     //Ce sera bientot réglé
-    public static Scene scene;
-    public static Player joueur;
+    public Scene scene;
+    public Player joueur;
 
     public Fenetre(){
 
@@ -20,14 +20,14 @@ public class Fenetre extends JFrame{
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         this.setUndecorated(true);
         this.setAlwaysOnTop(true);
-        joueur = new Player();
+        joueur = Player.getPlayer();
         this.addMouseListener(joueur);
         this.setVisible(true); //ligne pour définir les limites de l'écran
         
 
         
         // Implementation de la scene
-        scene = new Scene(this);
+        scene = Scene.getScene(this);
         this.setContentPane(scene);
     }
     public int getLongueur(){

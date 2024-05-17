@@ -4,9 +4,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Player implements MouseListener{
-    private Integer score;
+    private int score;
     private String nom;
+    private static Player player;
 
+    private Player(){
+        this.score = 0;
+        this.nom = "";
+    }
+    public static Player getPlayer(){
+        if (player == null){
+            player = new Player();
+        }
+        return player;
+    }
     public void scoreUp(){
         this.score=this.score+1;
     }
@@ -25,7 +36,7 @@ public class Player implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Scene.objListAv.avionClicke(e.getX(), e.getY());
+        Scene.getScene().objListAv.avionClicke(e.getX(), e.getY());
     }
 
     @Override
