@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Scene extends JPanel {
@@ -23,9 +24,8 @@ public class Scene extends JPanel {
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Liste_Avion(10, tab);
+        objListAv = new Liste_Avion(1, 1.0, 0.2, tab);
         //xtest = 1;
-
     }
 
     public Image getChoixImage(Double orientation){
@@ -35,7 +35,6 @@ public class Scene extends JPanel {
         double degrees = Math.toDegrees(orientation);
 
         degrees = (degrees + 360) % 360;
-
     
         if ((degrees >= 337.5 && degrees <= 360) || (degrees >= 0 && degrees < 22.5)) {
             imagePath = "app/src/main/resources/droite.png";
@@ -73,7 +72,7 @@ public class Scene extends JPanel {
         for (Avion avion : listAvion) {
             g2.drawImage(getChoixImage(avion.getOrientation()), avion.positionX(), avion.positionY(), null);
         }
-        objListAv.bouger_Avions();
+        objListAv.bougerAvions();
         //g2.drawImage(this.imgtest, 800,xtest, null);
         //System.out.println(xtest);
 

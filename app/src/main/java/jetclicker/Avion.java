@@ -2,7 +2,8 @@ package jetclicker;
 
 
 public class Avion {
-    boolean est_avion_privee;
+    boolean est_jet;
+    boolean est_avion_api;
     String nom;
     double orientation;
     int vitesse;
@@ -28,11 +29,17 @@ public class Avion {
     public void setVitesse(int vitesse) {
         this.vitesse = vitesse;
     }
-    public boolean getPrivate() {
-        return est_avion_privee;
+    public boolean isJet() {
+        return est_jet;
     }
-    public void setPrivate(boolean est_avion_privee) {
-        this.est_avion_privee = est_avion_privee;
+    public void setJet(boolean est_jet) {
+        this.est_jet = est_jet;
+    }
+    public boolean isApi() {
+        return est_avion_api;
+    }
+    public void setApi(boolean est_avion_api) {
+        this.est_avion_api = est_avion_api;
     }
     //#endregion
 
@@ -51,8 +58,9 @@ public class Avion {
     }
     //#endregion
 
-    public Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
-        this.est_avion_privee = IsPrivate;
+    public Avion(boolean est_api,boolean est_jet, String nom, double orientation, int vitesse, double x, double y){
+        this.est_avion_api = est_api;
+        this.est_jet = est_jet;
         this.nom = nom;
         this.orientation = orientation;
         this.vitesse = vitesse;
@@ -60,8 +68,9 @@ public class Avion {
         this.y = y;
     }
 
-    public void changerAvion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
-        this.est_avion_privee = IsPrivate;
+    public void changerAvion(boolean est_api, boolean est_jet, String nom, double orientation, int vitesse, double x, double y){
+        this.est_avion_api = est_api;
+        this.est_jet = est_jet;
         this.nom = nom;
         this.orientation = orientation;
         this.vitesse = vitesse;
