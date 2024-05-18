@@ -27,39 +27,11 @@ public class App {
         Gestionnaire_Niveau gest = Gestionnaire_Niveau.getGestionnaire_Niveau();
         gest.changerNiv();
 
-        //Fenetre tab = new Fenetre();
-        //tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
-        //tab.setVisible(true);
+        Fenetre tab = new Fenetre();
+        tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
+        tab.setVisible(true);
 
-        //Thread Tick = new Thread(new Tick());
-        //Tick.start();
-
-        //explosion one = queue.peek();
-
-        //System.out.println(one.showPosition());
-
-        //Liste_Avion liste_AvionTest = new Liste_Avion();
-        //liste_AvionTest.bouger_Avions();
-
-        try {
-            OpenSkyApi api = new OpenSkyApi("Dystog", "@JetClicker02");
-            double latA = 40.6;
-            double lonA = -9.6;
-            double latB = 50.0;
-            double lonB = 17.4;
-            OpenSkyStates os = api.getStates(0, null, new BoundingBox(latA, latB, lonA, lonB)); // Utilisation directe de BoundingBox
-            if (os.getStates() != null) {
-                System.out.println("Nombre d'avions recuperes : " + os.getStates().size());
-                for (StateVector state : os.getStates()) {
-                    if (state.getHeading() != null && (state.getVelocity() != null && state.getVelocity() >= 100)) {
-                        System.out.println(state.getIcao24() + " " + state.getCallsign() + " " + state.getLatitude() + " " + state.getLongitude());
-                    }
-                }
-            } else {
-                System.out.println("Aucun avion recupere");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Thread Tick = new Thread(new Tick());
+        Tick.start();
     }
 }
