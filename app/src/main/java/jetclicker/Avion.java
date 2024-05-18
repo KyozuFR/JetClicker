@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Avion {
     boolean est_jet;
+    boolean est_avion_api;
     String nom;
     double orientation;
     int vitesse;

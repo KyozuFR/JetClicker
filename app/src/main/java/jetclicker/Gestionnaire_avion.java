@@ -1,7 +1,13 @@
 package jetclicker;
 
 import java.util.ArrayList;
-import java.util.Random;    
+import java.util.Random;
+import java.io.IOException;
+
+import jetclicker.openskynetwork.api.OpenSkyApi;
+import jetclicker.openskynetwork.api.OpenSkyApi.BoundingBox;
+import jetclicker.openskynetwork.model.OpenSkyStates;
+import jetclicker.openskynetwork.model.StateVector;    
 
 public class Gestionnaire_avion {
     private ArrayList<Avion> liste_avion = new ArrayList<Avion>();
@@ -24,16 +30,41 @@ public class Gestionnaire_avion {
         return liste_avion;
     }
 
-    public void bouger_Avions(){
-        ArrayList<Avion> tempavion = new ArrayList<Avion>(liste_avion);
-        for (Avion avion : tempavion) {
-            avion.deplacement();
-            avionSorti(avion);
-            randomOrientation(avion, liste_avion.size()*20);
+    public void genererListeAvions(int nb_avion, double taux_avion_api, double taux_jet, ArrayList<StateVector> liste_avions_api){
+        rand = new Random();
+        for (int i=0; i<nb_avion;i++) {
+            if (liste_avions_api != null && (double) i/nb_avion < taux_avion_api) {
+                int indice_avion_api = rand.nextInt(liste_avions_api.size());
+                genererAvion(true,(double) i/nb_avion < taux_jet, liste_avions_api.get(indice_avion_api));
+                liste_avions_api.remove(indice_avion_api);
+            } else {
+                genererAvion(false,(double) i/nb_avion < taux_jet, null);
+            }
         }
     }
 
-    public void avionClicke(int x, int y){
+    public void genererAvion(boolean is_api, boolean is_jet, StateVector avion) {
+        if (is_api) {
+            System.out.println(avion.getCallsign()+" ("+avion.getLongitude()+"="+(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6)))+" "+avion.getLatitude()+"="+(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6))+") "+avion.getVelocity()+"="+avion.getVelocity()/64+" "+avion.getHeading()+"="+avion.getHeading()*(Math.PI/180));
+            Avion new_avion = new Avion(true,is_jet,avion.getCallsign(),Math.toRadians(avion.getHeading()),0,(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6))),(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6)));
+            liste_avion.add(new_avion);
+        } else {
+            rand = new Random();
+            Avion new_avion = new Avion(false,is_jet,"",Math.toRadians(rand.nextInt(361)),rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
+            liste_avion.add(new_avion);
+        }
+    }
+
+    public void bougerAvions(){
+        ArrayList<Avion> tempavion = new ArrayList<Avion>(liste_avion);
+        for (Avion avion : tempavion) {
+            avion.deplacement();
+            //avionSorti(avion);
+            //randomOrientation(avion, liste_avion.size()*20);
+        }
+    }
+
+    public void avionCliquer(int x, int y){
         ArrayList<Avion> tempavion = new ArrayList<Avion>(liste_avion);
         for (Avion avion : tempavion) {
             if (x >= avion.positionX()-5 && x <= avion.positionX() + 30 && y >= avion.positionY()-5 && y <= avion.positionY() + 30){
