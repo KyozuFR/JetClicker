@@ -85,10 +85,6 @@ public class OpenSkyStatesDeserializer extends StdDeserializer<OpenSkyStates> {
 		return result;
 	}
 
-<<<<<<< HEAD
-	@SuppressWarnings("deprecation")
-=======
->>>>>>> 185858f (update du dossier, pas de gros changement)
 	@Override
 	public OpenSkyStates deserialize(JsonParser jp, DeserializationContext dc) throws IOException {
 		if (jp.getCurrentToken() != null && jp.getCurrentToken() != JsonToken.START_OBJECT) {
