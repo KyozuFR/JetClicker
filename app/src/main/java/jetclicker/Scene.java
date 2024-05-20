@@ -13,7 +13,7 @@ public class Scene extends JPanel {
     private ImageIcon icoFond;
     private static Scene scene;
     private Image imgFond;
-    public Gestionnaire_avion objListAv;
+    protected Gestionnaire_avion objListAv;
     //private ImageIcon icotest;
     //private Image imgtest;
     //private int xtest;
@@ -23,7 +23,7 @@ public class Scene extends JPanel {
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Gestionnaire_avion(100, tab);
+        objListAv = new Gestionnaire_avion(0, tab);
         //xtest = 1;
 
     }
@@ -35,7 +35,6 @@ public class Scene extends JPanel {
     }
     public static Scene getScene(){
         return scene;
-
     }
 
     public Image getChoixImage(Double orientation, String nom){
