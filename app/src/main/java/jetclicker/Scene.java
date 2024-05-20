@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Scene extends JPanel {
@@ -72,7 +71,7 @@ public class Scene extends JPanel {
         for (Avion avion : listAvion) {
             g2.drawImage(getChoixImage(avion.getOrientation()), avion.positionX(), avion.positionY(), null);
         }
-        objListAv.bougerAvions();
+        objListAv.bouger_Avions();
         //g2.drawImage(this.imgtest, 800,xtest, null);
         //System.out.println(xtest);
 

@@ -3,13 +3,6 @@
  */
 package jetclicker;
 
-import java.io.IOException;
-
-import jetclicker.openskynetwork.api.OpenSkyApi;
-import jetclicker.openskynetwork.api.OpenSkyApi.BoundingBox;
-import jetclicker.openskynetwork.model.OpenSkyStates;
-import jetclicker.openskynetwork.model.StateVector;
-
 public class App {
 
 
