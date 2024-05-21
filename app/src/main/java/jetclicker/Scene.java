@@ -1,13 +1,14 @@
 package jetclicker;
 
 import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Color;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -164,9 +165,14 @@ public class Scene extends JPanel {
         // C'est ici que se dessine la scène
         super.paintComponent(g);
         Graphics g2 = (Graphics2D)g;
+        Font font=new Font("Arial",Font.PLAIN,50);
         //xtest += 10;
         
         g2.drawImage(this.imgFond, 0, 0, null);
+        g2.setFont(font);
+        g2.setColor(Color.PINK);
+        Player.getPlayer().scoreUp();
+        g2.drawString("Score: "+Player.getPlayer().getScore(),15,50);
         
         ArrayList<Avion> listAvion = objListAv.getListeAvion();
         int nbprivee = 0;
