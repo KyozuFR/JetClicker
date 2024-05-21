@@ -11,18 +11,21 @@ import java.awt.Color;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Scene extends JPanel {
 
-    private ImageIcon icoFond;
     private static Scene scene;
     private Image imgFond;
     private Gestionnaire_avion objListAv;
     private Fenetre fenetre;
     private boolean gagnePourCouleur;
     private boolean premierDemarage;
+	public static Queue<Explosion> liste_Explosion;
     //private ImageIcon icotest;
     //private Image imgtest;
     //private int xtest;
@@ -48,7 +51,7 @@ public class Scene extends JPanel {
         gagnePourCouleur = false;
         premierDemarage = true;
         //xtest = 1;
-
+        liste_Explosion = new LinkedList<Explosion>();
     }
     public static Scene getScene(Fenetre tab){
         if (scene == null){
@@ -181,6 +184,15 @@ public class Scene extends JPanel {
             Gestionnaire_Niveau.getGestionnaire_Niveau().changerNiv();
             gagnePourCouleur = true;
         }
+
+        for (Explosion boom : liste_Explosion) {
+            g2.drawImage(boom.changerImage(),boom.positionX() ,boom.positionY() , null);
+            if (boom.getImage()>16){
+                liste_Explosion.remove();
+            }
+            //System.out.println(boom.getX());
+        }
+
         objListAv.bouger_Avions();
         if (Gestionnaire_Niveau.getGestionnaire_Niveau().getTempCouleur()) {
             if (gagnePourCouleur) {
