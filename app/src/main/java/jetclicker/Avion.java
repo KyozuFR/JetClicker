@@ -32,8 +32,8 @@ public class Avion {
     public boolean getPrivate() {
         return est_jet;
     }
-    public void setPrivate(boolean est_jet) {
-        this.est_jet = est_jet;
+    public void setPrivate(boolean est_avion_privee) {
+        this.est_jet = est_avion_privee;
     }
     public boolean isApi() {
         return est_avion_api;
@@ -58,9 +58,9 @@ public class Avion {
     }
     //#endregion
 
-    public Avion(boolean est_api,boolean est_jet, String nom, double orientation, int vitesse, double x, double y){
+    public Avion(boolean est_api,boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_avion_api = est_api;
-        this.est_jet = est_jet;
+        this.est_jet = IsPrivate;
         this.nom = nom;
         this.orientation = orientation;
         this.vitesse = vitesse;
@@ -68,9 +68,9 @@ public class Avion {
         this.y = y;
     }
 
-    public void changerAvion(boolean est_api, boolean est_jet, String nom, double orientation, int vitesse, double x, double y){
+    public void changerAvion(boolean est_api, boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_avion_api = est_api;
-        this.est_jet = est_jet;
+        this.est_jet = IsPrivate;
         this.nom = nom;
         this.orientation = orientation;
         this.vitesse = vitesse;
