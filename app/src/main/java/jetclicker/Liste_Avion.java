@@ -16,14 +16,14 @@ public class Liste_Avion {
 
     public Liste_Avion(int nb_avion, Fenetre tabF){
         this.tab = tabF;
-        creeAvions(nb_avion, getListeAvionApi());
+        creeAvions(nb_avion, creeListeAvionApi());
     }
 
     public ArrayList<Avion> getListeAvion(){
         return liste_avion;
     }
 
-    public ArrayList<StateVector> getListeAvionApi() {
+    public ArrayList<StateVector> creeListeAvionApi() {
         try {
             OpenSkyApi api = new OpenSkyApi("Dystog", "@JetClicker02");
             OpenSkyStates os = api.getStates(0, null, new BoundingBox(40.6, 50.0, -9.6, 17.4)); // carte europe = {A:{lat:40.6,lon:-9.6} B:{lat:50.0,lon:17.4}}
@@ -53,7 +53,7 @@ public class Liste_Avion {
             if (liste_avions_api_utilisable != null && liste_avions_api_utilisable.size() > 0) { // si il est possible d'avoir des avions api
                 int indice_avion_api = rand.nextInt(liste_avions_api_utilisable.size()-1); // Récupere un avion aléatoire dans la liste d'avion api
                 StateVector avion = liste_avions_api_utilisable.get(indice_avion_api);
-                System.out.println(avion.getCallsign()+" ("+avion.getLongitude()+"="+(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6)))+" "+avion.getLatitude()+"="+(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6))+") "+avion.getVelocity()+"="+avion.getVelocity()/64+" "+(avion.getHeading())+"="+Math.toRadians(avion.getHeading()-180-90)+"="+(Math.toDegrees(Math.toRadians(avion.getHeading()-180))+360)%360);
+                //System.out.println(avion.getCallsign()+" ("+avion.getLongitude()+"="+(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6)))+" "+avion.getLatitude()+"="+(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6))+") "+avion.getVelocity()+"="+avion.getVelocity()/64+" "+(avion.getHeading())+"="+Math.toRadians(avion.getHeading()-180-90)+"="+(Math.toDegrees(Math.toRadians(avion.getHeading()-180))+360)%360);
                 new_avion = new Avion(true,false,"",Math.toRadians(Math.toRadians(avion.getHeading()-180-90)),0,(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6))),(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6)));
                 liste_avions_api_utilisable.remove(indice_avion_api);
             } else {
