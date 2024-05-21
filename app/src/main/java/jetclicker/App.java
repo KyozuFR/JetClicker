@@ -12,13 +12,8 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
-
-        Fenetre tab = new Fenetre();
-        tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
-        tab.setVisible(true);
-
-        Thread Tick = new Thread(new Tick());
-        Tick.start();
+        Gestionnaire_Niveau gest = Gestionnaire_Niveau.getGestionnaire_Niveau();
+        gest.changerNiv();
 
         //Avion AvionTest = new Avion(true, "Gerar", Math.PI, 10, 0.0, 0.0);
         //AvionTest.deplacement();
