@@ -11,7 +11,6 @@ import java.awt.Color;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -20,7 +19,6 @@ import java.util.Queue;
 
 public class Scene extends JPanel {
 
-    private ImageIcon icoFond;
     private static Scene scene;
     private Image imgFond;
     private Gestionnaire_avion objListAv;
