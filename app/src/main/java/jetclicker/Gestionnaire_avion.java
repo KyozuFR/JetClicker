@@ -41,6 +41,8 @@ public class Gestionnaire_avion {
                     Gestionnaire_Niveau.getGestionnaire_Niveau().perduDoncRestart();
                 }
                 avion.changerAvion(false,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
+                Explosion exp = new Explosion(avion.getX(), avion.getY());
+                Scene.liste_Explosion.add(exp);
             }
         }
 
