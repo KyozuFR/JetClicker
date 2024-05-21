@@ -3,6 +3,9 @@
  */
 package jetclicker;
 
+//import java.util.LinkedList;
+//import java.util.Queue;
+
 public class App {
 
 
@@ -12,21 +15,19 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        Gestionnaire_Niveau gest = Gestionnaire_Niveau.getGestionnaire_Niveau();
+        gest.changerNiv();
 
-        Fenetre tab = new Fenetre();
-        tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
-        tab.setVisible(true);
 
-        Thread Tick = new Thread(new Tick());
-        Tick.start();
+        //Queue<explosion> queue = new LinkedList<>();
+        
+        //queue.add(new explosion(2,1));
+        //queue.add(new explosion(6,4));
 
-        //Avion AvionTest = new Avion(true, "Gerar", Math.PI, 10, 0.0, 0.0);
-        //AvionTest.deplacement();
+        //explosion one = queue.peek();
 
-        //System.out.println(AvionTest.positionX());
-        //System.out.println(AvionTest.positionY());
+        //System.out.println(one.showPosition());
 
-        //Liste_Avion liste_AvionTest = new Liste_Avion();
-        //liste_AvionTest.bouger_Avions();
+        //queue.remove();
     }
 }
