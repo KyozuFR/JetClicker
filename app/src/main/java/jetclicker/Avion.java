@@ -3,8 +3,8 @@ package jetclicker;
 import java.util.Random;
 
 public class Avion {
-    boolean est_jet;
     boolean est_avion_api;
+    boolean est_jet;
     String nom;
     double orientation;
     int vitesse;

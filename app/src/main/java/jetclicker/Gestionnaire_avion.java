@@ -48,52 +48,42 @@ public class Gestionnaire_avion {
         return liste_avion;
     }
 
-    public ArrayList<StateVector> getListeAvionApi(int nb_avion, double taux_avion_api, double taux_jet) {
+    public ArrayList<StateVector> getListeAvionApi() {
         try {
             OpenSkyApi api = new OpenSkyApi("Dystog", "@JetClicker02");
             OpenSkyStates os = api.getStates(0, null, new BoundingBox(40.6, 50.0, -9.6, 17.4)); // carte europe = {A:{lat:40.6,lon:-9.6} B:{lat:50.0,lon:17.4}}
-            if (os.getStates() != null && os.getStates().size() > nb_avion*taux_avion_api) { // si des avions sont présent sur la carte, et qu'il y a assez d'avion sur la zone
-                ArrayList<StateVector> liste_avions_api = new ArrayList<StateVector>(); // Liste des avions retenu
-                int i = 0;
+            if (os.getStates() != null) { // si des avions sont présent sur la carte, et qu'il y a assez d'avion sur la zone
+                ArrayList<StateVector> liste_avions_api_utilisable = new ArrayList<StateVector>(); // Liste des avions retenu
                 for (StateVector avion : os.getStates()) { // Parcours la liste des avions récuperé pour seulement garder ceux interressant
                     if (avion.getCallsign() != null && avion.getHeading() != null && (avion.getVelocity() != null && avion.getVelocity() > 100) && avion.getLongitude() != null && avion.getLatitude() != null) { // si l'avion à les informations nécessaire
-                        liste_avions_api.add(avion);
-                        i++;
+                        liste_avions_api_utilisable.add(avion);
                     }
                 }
-                System.out.println("nombre d'avion: "+i+", liste_avions_api: "+liste_avions_api.size());
-                return liste_avions_api;
+                System.out.println("liste_avions_api_utilisable: "+liste_avions_api_utilisable.size());
+                return liste_avions_api_utilisable;
             } else { // si il n'y a pas d'avion sur la carte IRL
-                System.out.println("nombre d'avion: 0, liste_avions_api: null");
+                System.out.println("liste_avions_api_utilisable: null");
                 return null;
             }
         } catch (IOException e) { // si l'accèes à l'api renvoie une erreur
-            System.out.println("nombre d'avion: 0, liste_avions_api: null, erreur: "+e);
+            System.out.println("liste_avions_api_utilisable: null, erreur: "+e);
             return null;
         }
     }
 
-    public void creeListeAvions(int nb_avion, double taux_avion_api, double taux_jet, ArrayList<StateVector> liste_avions_api){
+    public void creeAvions(int nb_avion, ArrayList<StateVector> liste_avions_api_utilisable) {
         rand = new Random();
         for (int i=0; i<nb_avion;i++) {
-            if (liste_avions_api != null && (double) i/nb_avion < taux_avion_api) { // si il y'a besoin d'avion issue de l'api
-                int indice_avion_api = rand.nextInt(liste_avions_api.size()); // Récupere un avion aléatoire dans la liste d'avion api
-                creeAvions(true,(double) i/nb_avion < taux_jet, liste_avions_api.get(indice_avion_api));
-                liste_avions_api.remove(indice_avion_api);
+            Avion new_avion;
+            if (liste_avions_api_utilisable != null && liste_avions_api_utilisable.size() > 0) { // si il est possible d'avoir des avions api
+                int indice_avion_api = rand.nextInt(liste_avions_api_utilisable.size()-1); // Récupere un avion aléatoire dans la liste d'avion api
+                StateVector avion = liste_avions_api_utilisable.get(indice_avion_api);
+                System.out.println(avion.getCallsign()+" ("+avion.getLongitude()+"="+(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6)))+" "+avion.getLatitude()+"="+(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6))+") "+avion.getVelocity()+"="+avion.getVelocity()/64+" "+(avion.getHeading())+"="+Math.toRadians(avion.getHeading()-180-90)+"="+(Math.toDegrees(Math.toRadians(avion.getHeading()-180))+360)%360);
+                new_avion = new Avion(true,false,"",Math.toRadians(Math.toRadians(avion.getHeading()-180-90)),0,(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6))),(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6)));
+                liste_avions_api_utilisable.remove(indice_avion_api);
             } else {
-                creeAvions(false,(double) i/nb_avion < taux_jet, null);
+                new_avion = new Avion(false,false,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
             }
-        }
-    }
-
-    public void creeAvions(boolean is_api, boolean is_jet, StateVector avion) {
-        if (is_api) {
-            System.out.println(avion.getCallsign()+" ("+avion.getLongitude()+"="+(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6)))+" "+avion.getLatitude()+"="+(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6))+") "+avion.getVelocity()+"="+avion.getVelocity()/64+" "+(avion.getHeading())+"="+Math.toRadians(avion.getHeading()-180-90)+"="+(Math.toDegrees(Math.toRadians(avion.getHeading()-180))+360)%360);
-            Avion new_avion = new Avion(true,is_jet,avion.getCallsign(),Math.toRadians(Math.toRadians(avion.getHeading()-180-90)),0,(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6))),(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6)));
-            liste_avion.add(new_avion); // faudra penser à remettre la vitesse de l'avion, pour la rotation Math.toRadians((avion.getHeading()-180)): -180 pour correspondre à un angle entre -3.1415 et 3.1415 radians, - 90 pour correspondre à l'orientation des images, ce qui oblige d'utiliser pour la conversion radian -> degré: (Math.toDegrees(Math.toRadians(avion.getHeading()-180))+360)%360
-        } else {
-            rand = new Random();
-            Avion new_avion = new Avion(false,is_jet,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
             liste_avion.add(new_avion);
         }
     }
