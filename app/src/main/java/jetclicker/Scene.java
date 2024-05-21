@@ -1,6 +1,7 @@
 package jetclicker;
 
 import java.util.ArrayList;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -164,9 +165,13 @@ public class Scene extends JPanel {
         // C'est ici que se dessine la scène
         super.paintComponent(g);
         Graphics g2 = (Graphics2D)g;
+        Font font=new Font("Arial",Font.PLAIN,50);
         //xtest += 10;
         
         g2.drawImage(this.imgFond, 0, 0, null);
+        g2.setFont(font);
+        Player.getPlayer().scoreUp();
+        g2.drawString("Score: "+Player.getPlayer().getScore(),15,50);
         
         ArrayList<Avion> listAvion = objListAv.getListeAvion();
         int nbprivee = 0;
