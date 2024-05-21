@@ -37,6 +37,8 @@ public class Liste_Avion {
         ArrayList<Avion> tempavion = new ArrayList<Avion>(liste_avion);
         for (Avion avion : tempavion) {
             if (x >= avion.positionX()-5 && x <= avion.positionX() + 30 && y >= avion.positionY()-5 && y <= avion.positionY() + 30){
+                Explosion exp = new Explosion(avion.getX(), avion.getY());
+                Scene.liste_Explosion.add(exp);
                 avion.changerAvion(true,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
             }
         }

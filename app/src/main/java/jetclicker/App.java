@@ -3,6 +3,9 @@
  */
 package jetclicker;
 
+//import java.util.LinkedList;
+//import java.util.Queue;
+
 public class App {
 
 
@@ -20,13 +23,16 @@ public class App {
         Thread Tick = new Thread(new Tick());
         Tick.start();
 
-        //Avion AvionTest = new Avion(true, "Gerar", Math.PI, 10, 0.0, 0.0);
-        //AvionTest.deplacement();
 
-        //System.out.println(AvionTest.positionX());
-        //System.out.println(AvionTest.positionY());
+        //Queue<explosion> queue = new LinkedList<>();
+        
+        //queue.add(new explosion(2,1));
+        //queue.add(new explosion(6,4));
 
-        //Liste_Avion liste_AvionTest = new Liste_Avion();
-        //liste_AvionTest.bouger_Avions();
+        //explosion one = queue.peek();
+
+        //System.out.println(one.showPosition());
+
+        //queue.remove();
     }
 }

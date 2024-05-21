@@ -8,11 +8,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Scene extends JPanel {
 
     private ImageIcon icoFond;
     private Image imgFond;
     public static Liste_Avion objListAv;
+	public static Queue<Explosion> liste_Explosion;
     //private ImageIcon icotest;
     //private Image imgtest;
     //private int xtest;
@@ -22,9 +27,9 @@ public class Scene extends JPanel {
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Liste_Avion(100, tab);
+        objListAv = new Liste_Avion(10, tab);
         //xtest = 1;
-
+        liste_Explosion = new LinkedList<Explosion>();
     }
 
     public Image getChoixImage(Double orientation, String nom){
@@ -86,6 +91,15 @@ public class Scene extends JPanel {
         for (Avion avion : listAvion) {
             g2.drawImage(getChoixImage(avion.getOrientation(), avion.nom), avion.positionX(), avion.positionY(), null);
         }
+
+        for (Explosion boom : liste_Explosion) {
+            g2.drawImage(boom.changerImage(),boom.positionX() ,boom.positionY() , null);
+            if (boom.getImage()>16){
+                liste_Explosion.remove();
+            }
+            //System.out.println(boom.getX());
+        }
+
         objListAv.bouger_Avions();
         //g2.drawImage(this.imgtest, 800,xtest, null);
         //System.out.println(xtest);
