@@ -22,7 +22,14 @@ public class Gestionnaire_Niveau {
     }
 
     public void changerNiv(){
+        tick.stop();
         nbNiv+= 1;
+        niv(nbNiv);
+    }
+
+    public void perduDoncRestart(){
+        tick.stop();
+        Scene.getScene().getAvionAff().changerToutAvion();
         niv(nbNiv);
     }
 
@@ -31,7 +38,20 @@ public class Gestionnaire_Niveau {
             Fenetre tab = new Fenetre();
             tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
             tab.setVisible(true);
-            Scene.getScene().objListAv.creeAvions(2);
+            if (Scene.getScene().getAvionAff().getListeAvion().size() < 2) {
+                Scene.getScene().getAvionAff().creeAvions(2);
+            }
+            Scene.getScene().getAvionAff().creeJet(1);
+            tick.start();
+        }
+        if (nb==2){
+            Fenetre tab = new Fenetre();
+            tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
+            tab.setVisible(true);
+            if (Scene.getScene().getAvionAff().getListeAvion().size() < 10) {
+                Scene.getScene().getAvionAff().creeAvions(10);
+            }
+            Scene.getScene().getAvionAff().creeJet(2);
             tick.start();
         }
 

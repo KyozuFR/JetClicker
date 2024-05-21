@@ -36,7 +36,7 @@ public class Player implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Scene.getScene().objListAv.avionClicke(e.getX(), e.getY());
+        Scene.getScene().getAvionAff().avionClicke(e.getX(), e.getY());
     }
 
     @Override

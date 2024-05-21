@@ -3,7 +3,7 @@ package jetclicker;
 import java.util.Random;
 
 public class Avion {
-    boolean est_avion_privee;
+    boolean est_jet;
     String nom;
     double orientation;
     int vitesse;
@@ -30,10 +30,10 @@ public class Avion {
         this.vitesse = vitesse;
     }
     public boolean getPrivate() {
-        return est_avion_privee;
+        return est_jet;
     }
     public void setPrivate(boolean est_avion_privee) {
-        this.est_avion_privee = est_avion_privee;
+        this.est_jet = est_avion_privee;
     }
     //#endregion
 
@@ -84,7 +84,7 @@ public class Avion {
         return imagePath;
     }
     public Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
-        this.est_avion_privee = IsPrivate;
+        this.est_jet = IsPrivate;
         this.nom = choisirNom();
         this.orientation = orientation;
         this.vitesse = vitesse;
@@ -93,7 +93,7 @@ public class Avion {
     }
 
     public void changerAvion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
-        this.est_avion_privee = IsPrivate;
+        this.est_jet = IsPrivate;
         this.nom = choisirNom();
         this.orientation = orientation;
         this.vitesse = vitesse;

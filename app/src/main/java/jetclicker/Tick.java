@@ -13,7 +13,7 @@ public class Tick implements Runnable{
                 try{
                     Thread.sleep(pause);
                 } catch (InterruptedException e){}  
-                System.out.println("r");
+                //System.out.println("r");
             }
             
         }

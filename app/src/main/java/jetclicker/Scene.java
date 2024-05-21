@@ -13,7 +13,7 @@ public class Scene extends JPanel {
     private ImageIcon icoFond;
     private static Scene scene;
     private Image imgFond;
-    protected Gestionnaire_avion objListAv;
+    private Gestionnaire_avion objListAv;
     //private ImageIcon icotest;
     //private Image imgtest;
     //private int xtest;
@@ -35,6 +35,10 @@ public class Scene extends JPanel {
     }
     public static Scene getScene(){
         return scene;
+    }
+
+    public Gestionnaire_avion getAvionAff(){
+        return objListAv;
     }
 
     public Image getChoixImage(Double orientation, String nom){
@@ -89,12 +93,18 @@ public class Scene extends JPanel {
         super.paintComponent(g);
         Graphics g2 = (Graphics2D)g;
         //xtest += 10;
-        
-        g2.drawImage(this.imgFond, -50, -50, null);
+        g2.drawImage(this.imgFond, 0, 0, null);
         
         ArrayList<Avion> listAvion = objListAv.getListeAvion();
+        int nbprivee = 0;
         for (Avion avion : listAvion) {
             g2.drawImage(getChoixImage(avion.getOrientation(), avion.nom), avion.positionX(), avion.positionY(), null);
+            if (avion.getPrivate() == true) {
+                nbprivee += 1;
+            }
+        }
+        if (nbprivee == 0) {
+            Gestionnaire_Niveau.getGestionnaire_Niveau().changerNiv();
         }
         objListAv.bouger_Avions();
         //g2.drawImage(this.imgtest, 800,xtest, null);
