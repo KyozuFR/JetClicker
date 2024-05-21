@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.Color;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Scene extends JPanel {
@@ -25,8 +30,19 @@ public class Scene extends JPanel {
     private Scene(Fenetre tab){
         //Variable initialisé
         super();
-        icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
-        this.imgFond = this.icoFond.getImage();
+        BufferedImage originalImage;
+        try {
+            originalImage = ImageIO.read(new File("app/src/main/resources/CarteFrance.png"));
+            if (originalImage != null) {
+                ImageIcon imageIcon = new ImageIcon(originalImage.getScaledInstance(tab.getLongueur(), tab.getLargueur(), Image.SCALE_SMOOTH));
+
+                imgFond = imageIcon.getImage();
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        objListAv = new Gestionnaire_avion(100, tab);
         objListAv = new Gestionnaire_avion(0, tab);
         this.fenetre = tab;
         gagnePourCouleur = false;
@@ -146,6 +162,7 @@ public class Scene extends JPanel {
         super.paintComponent(g);
         Graphics g2 = (Graphics2D)g;
         //xtest += 10;
+        
         g2.drawImage(this.imgFond, 0, 0, null);
         
         ArrayList<Avion> listAvion = objListAv.getListeAvion();
