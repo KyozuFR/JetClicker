@@ -25,6 +25,7 @@ public class Scene extends JPanel {
         this.imgFond = this.icoFond.getImage();
         objListAv = new Liste_Avion(1, 1.0, 0.2, tab);
         //xtest = 1;
+        
     }
 
     public Image getChoixImage(Double orientation){
