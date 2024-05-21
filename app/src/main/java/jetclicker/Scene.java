@@ -23,7 +23,7 @@ public class Scene extends JPanel {
         super();
         icoFond = new ImageIcon("app/src/main/resources/CarteFrance.png");
         this.imgFond = this.icoFond.getImage();
-        objListAv = new Liste_Avion(1, 1.0, 0.2, tab);
+        objListAv = new Liste_Avion(10, tab);
         //xtest = 1;
         
     }
@@ -66,7 +66,7 @@ public class Scene extends JPanel {
         Graphics g2 = (Graphics2D)g;
         //xtest += 10;
         
-        g2.drawImage(this.imgFond, -50, -50, null);
+        g2.drawImage(this.imgFond, 0, 0, null);
         
         ArrayList<Avion> listAvion = objListAv.getListeAvion();
         for (Avion avion : listAvion) {

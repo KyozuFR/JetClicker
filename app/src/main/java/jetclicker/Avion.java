@@ -2,8 +2,8 @@ package jetclicker;
 
 
 public class Avion {
-    boolean est_jet;
     boolean est_avion_api;
+    boolean est_jet;
     String nom;
     double orientation;
     int vitesse;
@@ -29,10 +29,10 @@ public class Avion {
     public void setVitesse(int vitesse) {
         this.vitesse = vitesse;
     }
-    public boolean isJet() {
+    public boolean getPrivate() {
         return est_jet;
     }
-    public void setJet(boolean est_jet) {
+    public void setPrivate(boolean est_jet) {
         this.est_jet = est_jet;
     }
     public boolean isApi() {
