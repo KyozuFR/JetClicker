@@ -1,6 +1,7 @@
 package jetclicker;
 
 import java.util.ArrayList;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -170,6 +171,7 @@ public class Scene extends JPanel {
         
         g2.drawImage(this.imgFond, 0, 0, null);
         g2.setFont(font);
+        g2.setColor(Color.PINK);
         Player.getPlayer().scoreUp();
         g2.drawString("Score: "+Player.getPlayer().getScore(),15,50);
         
