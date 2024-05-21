@@ -33,6 +33,9 @@ public class Gestionnaire_Niveau {
     public void changerNiv(){
         tick.stop();
         nbNiv+= 1;
+        if (nbNiv > 1) {
+            Player.getPlayer().scoreUp();
+        }
         niv(nbNiv);
     }
     public boolean getDiffTemp(){
@@ -48,6 +51,7 @@ public class Gestionnaire_Niveau {
     public void perduDoncRestart(){
         tick.stop();
         Scene.getScene().getAvionAff().changerToutAvion();
+        Player.getPlayer().scoreDown();
         niv(nbNiv);
     }
 

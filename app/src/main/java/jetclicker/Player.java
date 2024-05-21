@@ -19,7 +19,10 @@ public class Player implements MouseListener{
         return player;
     }
     public void scoreUp(){
-        this.score=this.score+1;
+        this.score=this.score+10;
+    }
+    public void scoreDown(){
+        this.score=this.score-1;
     }
 
     public int getScore(){
