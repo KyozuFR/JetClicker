@@ -36,6 +36,12 @@ public class Avion {
     public void setPrivate(boolean est_avion_privee) {
         this.est_jet = est_avion_privee;
     }
+    public boolean isApi() {
+        return est_avion_api;
+    }
+    public void setApi(boolean est_avion_api) {
+        this.est_avion_api = est_avion_api;
+    }
     //#endregion
 
     //#region Coordonée
@@ -52,6 +58,7 @@ public class Avion {
         this.y = y;
     }
     //#endregion
+<<<<<<< HEAD
     public String choisirNom(){
         Random rand = new Random();
         int choixImage = rand.nextInt(7);
@@ -87,15 +94,29 @@ public class Avion {
     public Avion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_jet = IsPrivate;
         this.nom = choisirNom();
+=======
+
+    public Avion(boolean est_api,boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
+        this.est_avion_api = est_api;
+        this.est_jet = IsPrivate;
+        this.nom = nom;
+>>>>>>> 2c82715 (changement nom variables/méthodes dans classe Avion pour coincider avec main/dev)
         this.orientation = orientation;
         this.vitesse = vitesse;
         this.x = x;
         this.y = y;
     }
 
+<<<<<<< HEAD
     public void changerAvion(boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
         this.est_jet = IsPrivate;
         this.nom = choisirNom();
+=======
+    public void changerAvion(boolean est_api, boolean IsPrivate, String nom, double orientation, int vitesse, double x, double y){
+        this.est_avion_api = est_api;
+        this.est_jet = IsPrivate;
+        this.nom = nom;
+>>>>>>> 2c82715 (changement nom variables/méthodes dans classe Avion pour coincider avec main/dev)
         this.orientation = orientation;
         this.vitesse = vitesse;
         this.x = x;
