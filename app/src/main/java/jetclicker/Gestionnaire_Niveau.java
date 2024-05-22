@@ -57,8 +57,9 @@ public class Gestionnaire_Niveau {
 
     public void templateNiv(int tempMaxTmp, int nbAvions, int nbJet){
         tempmax = tempMaxTmp;
-        Scene.getScene().getAvionAff().creeAvions(nbAvions - Scene.getScene().getAvionAff().getListeAvion().size());
-        Scene.getScene().getAvionAff().creeJet(nbJet);
+        Gestionnaire_avion tempgest = Scene.getScene().getAvionAff();
+        tempgest.creeAvions(nbAvions - Scene.getScene().getAvionAff().getListeAvion().size(), tempgest.creeListeAvionApi());
+        tempgest.creeJet(nbJet);
         debut = Instant.now();
         tick.start();
     }

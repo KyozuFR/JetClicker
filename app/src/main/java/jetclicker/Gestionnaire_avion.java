@@ -16,7 +16,7 @@ public class Gestionnaire_avion {
 
     public Gestionnaire_avion(int n, Fenetre tabF){
         this.tab = tabF;
-        creeAvions(nb_avion, creeListeAvionApi());
+        creeAvions(n, creeListeAvionApi());
     }
 
     public ArrayList<Avion> getListeAvion(){
@@ -54,10 +54,10 @@ public class Gestionnaire_avion {
                 int indice_avion_api = rand.nextInt(liste_avions_api_utilisable.size()-1); // Récupere un avion aléatoire dans la liste d'avion api
                 StateVector avion = liste_avions_api_utilisable.get(indice_avion_api);
                 //System.out.println(avion.getCallsign()+" ("+avion.getLongitude()+"="+(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6)))+" "+avion.getLatitude()+"="+(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6))+") "+avion.getVelocity()+"="+avion.getVelocity()/64+" "+(avion.getHeading())+"="+Math.toRadians(avion.getHeading()-180-90)+"="+(Math.toDegrees(Math.toRadians(avion.getHeading()-180))+360)%360);
-                new_avion = new Avion(true,false,"",Math.toRadians(Math.toRadians(avion.getHeading()-180-90)),0,(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6))),(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6)));
+                new_avion = new Avion(false,"",Math.toRadians(Math.toRadians(avion.getHeading()-180-90)),0,(int)((avion.getLongitude()-(-9.6))*tab.getLongueur()/((17.4)-(-9.6))),(int)(tab.getLargueur()-(avion.getLatitude()-40.6)*tab.getLargueur()/(50.0-40.6)));
                 liste_avions_api_utilisable.remove(indice_avion_api);
             } else {
-                new_avion = new Avion(false,false,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
+                new_avion = new Avion(false,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
             }
             liste_avion.add(new_avion);
         }
