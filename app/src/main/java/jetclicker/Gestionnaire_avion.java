@@ -21,7 +21,6 @@ public class Gestionnaire_avion {
  */
     public Gestionnaire_avion(int n, Fenetre tabF){
         this.tab = tabF;
-        creeAvions(n, creeListeAvionApi());
     }
 
 /**

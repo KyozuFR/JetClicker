@@ -25,13 +25,6 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
         Gestionnaire_Niveau gest = Gestionnaire_Niveau.getGestionnaire_Niveau();
-        gest.changerNiv();
-
-        Fenetre tab = new Fenetre();
-        tab.setVisible(false); //pour actualiser la fenetre et avoir les limite de l'écran actualisé (c'est du bricolage)
-        tab.setVisible(true);
-
-        Thread Tick = new Thread(new Tick());
-        Tick.start();
+        //gest.changerNiv(); //cette ligne est censé être là (comme l'api prend trop de temps ça détecte 0 avion)
     }
 }

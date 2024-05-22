@@ -50,7 +50,6 @@ public class Scene extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        objListAv = new Gestionnaire_avion(100, tab);
         objListAv = new Gestionnaire_avion(0, tab);
         this.fenetre = tab;
         gagnePourCouleur = false;
