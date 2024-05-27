@@ -68,7 +68,7 @@ public class Gestionnaire_avion {
         for (int i=0; i<nb_avion;i++) {
             Avion new_avion;
             if (liste_avions_api_utilisable != null && liste_avions_api_utilisable.size() > 0) { // si il est possible d'avoir des avions api
-                int indice_avion_api = rand.nextInt(liste_avions_api_utilisable.size()-1); // Récupere un avion aléatoire dans la liste d'avion api (pour pas avoir les même entre 2 game)
+                int indice_avion_api = rand.nextInt(liste_avions_api_utilisable.size()); // Récupere un avion aléatoire dans la liste d'avion api (pour pas avoir les même entre 2 game)
                 StateVector avion = liste_avions_api_utilisable.get(indice_avion_api);
                 new_avion = new Avion(false,"",Math.toRadians(avion.getHeading()+270),0,((int)((avion.getLongitude()-Alon)*tab.getLongueur()/(Blon-Alon)))-15,((int)(tab.getLargueur()-(avion.getLatitude()-Alat)*tab.getLargueur()/(Blat-Alat)))-15);
                 liste_avions_api_utilisable.remove(indice_avion_api);
