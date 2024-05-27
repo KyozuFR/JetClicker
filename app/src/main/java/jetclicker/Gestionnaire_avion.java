@@ -58,21 +58,24 @@ public class Gestionnaire_avion {
             if (liste_avions_api_utilisable != null && liste_avions_api_utilisable.size() > 0) { // si il est possible d'avoir des avions api
                 int indice_avion_api = rand.nextInt(liste_avions_api_utilisable.size()); // Récupere un avion aléatoire dans la liste d'avion api (pour pas avoir les même entre 2 game)
                 StateVector avion = liste_avions_api_utilisable.get(indice_avion_api);
-                new_avion = new Avion(false,"",Math.toRadians(avion.getHeading()+270),0,((int)((avion.getLongitude()-Alon)*tab.getLongueur()/(Blon-Alon)))-15,((int)(tab.getLargueur()-(avion.getLatitude()-Alat)*tab.getLargueur()/(Blat-Alat)))-15);
+                new_avion = new Avion(false,"",Math.toRadians(avion.getHeading()+270),(int)(avion.getVelocity()/92),((int)((avion.getLongitude()-Alon)*tab.getLongueur()/(Blon-Alon)))-15,((int)(tab.getLargueur()-(avion.getLatitude()-Alat)*tab.getLargueur()/(Blat-Alat)))-15);
                 liste_avions_api_utilisable.remove(indice_avion_api);
+                System.out.println(avion.getCallsign());
             } else {
                 new_avion = new Avion(false,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
+                System.out.println("");
             }
             liste_avion.add(new_avion);
         }
+        System.out.println("---------------");
     }
 
     public void bouger_Avions(){
         ArrayList<Avion> tempavion = new ArrayList<Avion>(liste_avion);
         for (Avion avion : tempavion) {
             avion.deplacement();
-            //avionSorti(avion); J'ai enlevé ça pour bien vérifier si l'avion correspond à celui IRL
-            //randomOrientation(avion, liste_avion.size()*20); Idem
+            avionSorti(avion);
+            randomOrientation(avion, liste_avion.size()*20);
         }
     }
 
