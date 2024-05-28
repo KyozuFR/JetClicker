@@ -6,6 +6,11 @@ package jetclicker;
 //import java.util.LinkedList;
 //import java.util.Queue;
 
+/**
+ * Cette classe lance tout le jeu.
+ */
+
+
 public class App {
 
 

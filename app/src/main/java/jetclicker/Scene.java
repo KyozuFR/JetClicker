@@ -18,6 +18,10 @@ import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Classe qui s'occupe de mettre tout ce dont il y a besoin dans la fenetre.
+ */
+
 public class Scene extends JPanel {
 
     private static Scene scene;
@@ -54,12 +58,29 @@ public class Scene extends JPanel {
         //xtest = 1;
         liste_Explosion = new LinkedList<Explosion>();
     }
+
+/**
+ * Vérifie si une scène existe.
+ * Si oui la renvoie.
+ * Si non en créée une nouvelle et la renvoie.
+ * 
+ * @param tab
+ * @return
+ */
+
     public static Scene getScene(Fenetre tab){
         if (scene == null){
             scene = new Scene(tab);
         }
         return scene;
     }
+    
+/**
+ * Renvoie la scène
+ * 
+ * @return La scène
+ */
+
     public static Scene getScene(){
         return scene;
     }
@@ -67,6 +88,14 @@ public class Scene extends JPanel {
     public Gestionnaire_avion getAvionAff(){
         return objListAv;
     }
+
+/**
+ * Choisie l'image à utiliser pour que l'avion soit de la bonne compagnie et face la direction dans laquelle il se dirige.
+ * 
+ * @param orientation La face vers laquelle l'avion est dirigé
+ * @param nom La compagnie de l'avion
+ * @return L'image à utiliser
+ */
 
     public Image getChoixImage(Double orientation, String nom){
         ImageIcon icotest;
@@ -115,6 +144,13 @@ public class Scene extends JPanel {
         return imgtest;
     }
 
+/**
+ * Choisi la bonne image d'avion à afficher en fonction de l'orientation de l'avion pour que le nez de l'avion face la direction dans laquelle il se dirige.
+ * 
+ * @param orientation La face vers laquelle l'avion est dirigé
+ * @return L'image à utiliser
+ */
+
     public Image getChoixImage(Double orientation){
         ImageIcon icotest;
         String imagePath = "app/src/main/resources/avion/avion_rouge/";
@@ -160,6 +196,12 @@ public class Scene extends JPanel {
 
         return imgtest;
     }
+
+/**
+ * Dessine toute la scène en mettant les images d'avions sur la carte, affichant le score, affichant les explosions, passe le niveau si il est terminé et affiche les jets en rouge au départ.
+ * 
+ * @param g
+ */
 
     public void paintComponent(Graphics g){
         // C'est ici que se dessine la scène

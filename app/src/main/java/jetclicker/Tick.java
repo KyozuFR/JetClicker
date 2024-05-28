@@ -1,5 +1,7 @@
 package jetclicker;
-
+/**
+ * Classe qui s'occupe du tick du temps.
+ */
 public class Tick implements Runnable{
     private final int pause = 41;
     //Sans volatile, le changement de boolean n'est pas lu
