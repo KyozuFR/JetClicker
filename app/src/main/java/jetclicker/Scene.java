@@ -25,7 +25,8 @@ public class Scene extends JPanel {
     private Gestionnaire_avion objListAv;
     private Fenetre fenetre;
     private boolean gagnePourCouleur;
-    private boolean premierDemarage;
+    private boolean eviterRouge;
+    private boolean premierDem;
 	public static Queue<Explosion> liste_Explosion;
     //private ImageIcon icotest;
     //private Image imgtest;
@@ -49,7 +50,8 @@ public class Scene extends JPanel {
         objListAv = new Gestionnaire_avion(0, tab);
         this.fenetre = tab;
         gagnePourCouleur = false;
-        premierDemarage = true;
+        eviterRouge = true;
+        premierDem = true;
         //xtest = 1;
         liste_Explosion = new LinkedList<Explosion>();
     }
@@ -161,59 +163,63 @@ public class Scene extends JPanel {
     }
 
     public void paintComponent(Graphics g){
-        // C'est ici que se dessine la scène
-        super.paintComponent(g);
-        Graphics g2 = (Graphics2D)g;
-        Font font=new Font("Arial",Font.PLAIN,50);
-        //xtest += 10;
-        
-        g2.drawImage(this.imgFond, 0, 0, null);
-        g2.setFont(font);
-        g2.setColor(Color.PINK);
-        g2.drawString("Score: "+Player.getPlayer().getScore(),15,50);
-        
-        ArrayList<Avion> listAvion = objListAv.getListeAvion();
-        int nbprivee = 0;
-        for (Avion avion : listAvion) {
-            if (Gestionnaire_Niveau.getGestionnaire_Niveau().getDiffTemp() && avion.getPrivate() == true) {
-                g2.drawImage(getChoixImage(avion.getOrientation()), avion.positionX(), avion.positionY(), null);
+        if (!premierDem) {
+            // C'est ici que se dessine la scène
+            super.paintComponent(g);
+            Graphics g2 = (Graphics2D)g;
+            Font font=new Font("Arial",Font.PLAIN,50);
+            //xtest += 10;
+            
+            g2.drawImage(this.imgFond, 0, 0, null);
+            g2.setFont(font);
+            g2.setColor(Color.PINK);
+            g2.drawString("Score: "+Player.getPlayer().getScore(),15,50);
+            
+            ArrayList<Avion> listAvion = objListAv.getListeAvion();
+            int nbprivee = 0;
+            for (Avion avion : listAvion) {
+                if (Gestionnaire_Niveau.getGestionnaire_Niveau().getDiffTemp() && avion.getPrivate() == true) {
+                    g2.drawImage(getChoixImage(avion.getOrientation()), avion.positionX(), avion.positionY(), null);
+                } else {
+                    g2.drawImage(getChoixImage(avion.getOrientation(), avion.nom), avion.positionX(), avion.positionY(), null);
+                }
+                if (avion.getPrivate() == true) {
+                    nbprivee += 1;
+                }
+            }
+            if (nbprivee == 0) {
+                Gestionnaire_Niveau.getGestionnaire_Niveau().changerNiv();
+                gagnePourCouleur = true;
+            }
+
+            for (Explosion boom : liste_Explosion) {
+                g2.drawImage(boom.changerImage(),boom.positionX() ,boom.positionY() , null);
+                if (boom.getImage()>16){
+                    liste_Explosion.remove();
+                }
+                //System.out.println(boom.getX());
+            }
+
+            objListAv.bouger_Avions();
+            if (Gestionnaire_Niveau.getGestionnaire_Niveau().getTempCouleur()) {
+                if (gagnePourCouleur) {
+                    g2.setColor(new Color(0, 255, 0, 64));
+                    g2.fillRect(0, 0, fenetre.getLongueur(), fenetre.getLargueur());
+                } else if (eviterRouge == false){
+                    g2.setColor(new Color(255, 0, 0, 64));
+                    g2.fillRect(0, 0, fenetre.getLongueur(), fenetre.getLargueur());
+                }
             } else {
-                g2.drawImage(getChoixImage(avion.getOrientation(), avion.nom), avion.positionX(), avion.positionY(), null);
+                gagnePourCouleur = false;
+                eviterRouge = false;
             }
-            if (avion.getPrivate() == true) {
-                nbprivee += 1;
-            }
-        }
-        if (nbprivee == 0) {
-            Gestionnaire_Niveau.getGestionnaire_Niveau().changerNiv();
-            gagnePourCouleur = true;
-        }
+            //g2.drawImage(this.imgtest, 800,xtest, null);
+            //System.out.println(xtest);
 
-        for (Explosion boom : liste_Explosion) {
-            g2.drawImage(boom.changerImage(),boom.positionX() ,boom.positionY() , null);
-            if (boom.getImage()>16){
-                liste_Explosion.remove();
-            }
-            //System.out.println(boom.getX());
+            //* A faire par la suite: Boucle Foreach d'avion qui les met avec un png et un position*/
+        }else{
+            premierDem = false;
         }
-
-        objListAv.bouger_Avions();
-        if (Gestionnaire_Niveau.getGestionnaire_Niveau().getTempCouleur()) {
-            if (gagnePourCouleur) {
-                g2.setColor(new Color(0, 255, 0, 64));
-                g2.fillRect(0, 0, fenetre.getLongueur(), fenetre.getLargueur());
-            } else if (premierDemarage == false){
-                g2.setColor(new Color(255, 0, 0, 64));
-                g2.fillRect(0, 0, fenetre.getLongueur(), fenetre.getLargueur());
-            }
-        } else {
-            gagnePourCouleur = false;
-            premierDemarage = false;
-        }
-        //g2.drawImage(this.imgtest, 800,xtest, null);
-        //System.out.println(xtest);
-
-        //* A faire par la suite: Boucle Foreach d'avion qui les met avec un png et un position*/
     }
 
 }
