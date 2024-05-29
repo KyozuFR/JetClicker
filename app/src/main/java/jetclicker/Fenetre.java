@@ -26,7 +26,7 @@ public class Fenetre extends JFrame{
         this.setBounds(0,0,800,800);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         this.setUndecorated(true);
-        this.setAlwaysOnTop(true);
+        //this.setAlwaysOnTop(true);
         joueur = Player.getPlayer();
         this.addMouseListener(joueur);
         this.setVisible(true); //ligne pour définir les limites de l'écran

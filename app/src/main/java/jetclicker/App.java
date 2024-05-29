@@ -3,14 +3,6 @@
  */
 package jetclicker;
 
-//import java.util.LinkedList;
-//import java.util.Queue;
-
-/**
- * Cette classe lance tout le jeu.
- */
-
-
 public class App {
 
 
@@ -21,18 +13,6 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
         Gestionnaire_Niveau gest = Gestionnaire_Niveau.getGestionnaire_Niveau();
-        gest.changerNiv();
-
-
-        //Queue<explosion> queue = new LinkedList<>();
-        
-        //queue.add(new explosion(2,1));
-        //queue.add(new explosion(6,4));
-
-        //explosion one = queue.peek();
-
-        //System.out.println(one.showPosition());
-
-        //queue.remove();
+        gest.changerNiv(); //cette ligne est censé être là (comme l'api prend trop de temps ça détecte 0 avion)
     }
 }

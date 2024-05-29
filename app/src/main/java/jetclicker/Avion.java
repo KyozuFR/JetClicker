@@ -3,6 +3,7 @@ package jetclicker;
 import java.util.Random;
 
 public class Avion {
+    boolean est_avion_api;
     boolean est_jet;
     String nom;
     double orientation;
@@ -90,6 +91,12 @@ public class Avion {
 
     public void setPrivate(boolean est_avion_privee) {
         this.est_jet = est_avion_privee;
+    }
+    public boolean isApi() {
+        return est_avion_api;
+    }
+    public void setApi(boolean est_avion_api) {
+        this.est_avion_api = est_avion_api;
     }
     //#endregion
 
