@@ -25,6 +25,6 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
         Gestionnaire_Niveau gest = Gestionnaire_Niveau.getGestionnaire_Niveau();
-        //gest.changerNiv(); //cette ligne est censé être là (comme l'api prend trop de temps ça détecte 0 avion)
+        gest.changerNiv(); //cette ligne est censé être là (comme l'api prend trop de temps ça détecte 0 avion)
     }
 }

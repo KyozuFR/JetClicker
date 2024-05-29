@@ -51,14 +51,14 @@ public class Gestionnaire_avion {
                         liste_avions_api_utilisable.add(avion);
                     }
                 }
-                System.out.println("liste_avions_api_utilisable: "+liste_avions_api_utilisable.size());
+                //System.out.println("liste_avions_api_utilisable: "+liste_avions_api_utilisable.size());
                 return liste_avions_api_utilisable;
             } else { // si il n'y a pas d'avion sur la carte IRL
-                System.out.println("liste_avions_api_utilisable: null");
+                //System.out.println("liste_avions_api_utilisable: null");
                 return null;
             }
         } catch (IOException e) { // si l'accèes à l'api renvoie une erreur
-            System.out.println("liste_avions_api_utilisable: null, erreur: "+e);
+            //System.out.println("liste_avions_api_utilisable: null, erreur: "+e);
             return null;
         }
     }
@@ -72,14 +72,14 @@ public class Gestionnaire_avion {
                 StateVector avion = liste_avions_api_utilisable.get(indice_avion_api);
                 new_avion = new Avion(false,"",Math.toRadians(avion.getHeading()+270),(int)(avion.getVelocity()/92),((int)((avion.getLongitude()-Alon)*tab.getLongueur()/(Blon-Alon)))-15,((int)(tab.getLargueur()-(avion.getLatitude()-Alat)*tab.getLargueur()/(Blat-Alat)))-15);
                 liste_avions_api_utilisable.remove(indice_avion_api);
-                System.out.println(avion.getCallsign());
+                //System.out.println(avion.getCallsign());
             } else {
                 new_avion = new Avion(false,"",rand.nextDouble()*2*Math.PI-Math.PI,rand.nextInt(2)+1,rand.nextInt((tab.getLongueur()-20)+10),rand.nextInt((tab.getLargueur()-20)+10));
-                System.out.println("");
+                //System.out.println("");
             }
             liste_avion.add(new_avion);
         }
-        System.out.println("---------------");
+        //System.out.println("---------------");
     }
 
     public void bouger_Avions(){
