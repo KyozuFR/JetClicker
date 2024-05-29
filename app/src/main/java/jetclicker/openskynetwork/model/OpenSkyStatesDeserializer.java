@@ -85,6 +85,7 @@ public class OpenSkyStatesDeserializer extends StdDeserializer<OpenSkyStates> {
 		return result;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public OpenSkyStates deserialize(JsonParser jp, DeserializationContext dc) throws IOException {
 		if (jp.getCurrentToken() != null && jp.getCurrentToken() != JsonToken.START_OBJECT) {
