@@ -121,11 +121,33 @@ public class Gestionnaire_Niveau {
             templateNiv(2000,2,1);
         }
         if (nb==2){
-            templateNiv(5000,10,2);
+            templateNiv(5000,6,2);
         }
         if (nb==3){
+            templateNiv(5000,10,2);
+        }
+        if (nb==4){
             templateNiv(5000,10,5);
         }
+        if (nb==5){
+            templateNiv(4000,15,5);
+        }
+        if (nb==6){
+            templateNiv(4000,20,5);
+        }
+        if (nb==7){
+            templateNiv(2000,20,1);
+        }
+        if (nb==8){
+            templateNiv(2000,40,1);
+        }
+        if (nb==9){
+            templateNiv(4000,40,5);
+        }
+        if (nb==10){
+            templateNiv(2000,1000,2);
+        }
+        
 
     }
     
